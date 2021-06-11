@@ -46,6 +46,7 @@ html, body, document {
   overflow: hidden !important;
 }
 
+
 /* ######################################################################### */
 /* Define common properties for all elements that will be created at runtime */
 /* ######################################################################### */
@@ -56,6 +57,7 @@ div, input, button, span {
    /* padding: 0px;
    margin:  0px;
    border:  0px; */
+   cursor:  default;
 
   /* font-family: "Ubuntu", verdana, Helvetica;
     font-name: "Ubuntu";
@@ -138,7 +140,6 @@ div, input, button, span {
 .TW3CustomControl {
   background-color: #EFEBE7;
   color: #000000;
-  cursor: default;
 }
 
 /* ######################################################################### */
@@ -171,6 +172,7 @@ div, input, button, span {
   -webkit-user-select: none;
   -ms-user-select: none;
 }
+
 
 /* ######################################################################### */
 /* Define font sizes                                                         */
@@ -238,6 +240,11 @@ div, input, button, span {
   background-color: #FFFFFF;
 }
 
+/* The selection color [highlight] can also be adjusted */
+.TW3EditBackground::selection {
+  background-color: default;
+}
+
 /* List control backgrounds. Controls like TW3ListBox
    use these styles. Notice that we separate between
    normal-item and selected-item */
@@ -249,16 +256,8 @@ div, input, button, span {
   background-color: #FFFFFF;
 }
 
-.TW3DecorativeListItemBackground {
-  background-color: #F2F1F0;
-}
-
 .TW3ListItemSelectedBackground {
   background-color: #EFEFEF;
-}
-
-.TW3TransparentBackground {
-  background: none;
 }
 
 .TW3ButtonBackground {
@@ -559,6 +558,7 @@ div, input, button, span {
 	border-bottom-right-radius:  8px;
 }
 
+
 /* ######################################################################### */
 /* Form styles                                                               */
 /* ######################################################################### */
@@ -626,7 +626,6 @@ div, input, button, span {
 
 .TW3Panel, .TW3CustomPanel {
   padding: 2px;
-  cursor: default;
   outline-style: solid;
   outline-width: 1px;
   outline-color: #EFEBE7;
@@ -634,12 +633,11 @@ div, input, button, span {
 }
 
 /* ######################################################################### */
-/* TW3Image and TW3PaintBox                                                  */
+/* TW3Image                                                                  */
 /* ######################################################################### */
 
-.TW3Image, .TW3PaintBox {
+.TW3Image {
   padding: 0px !important;
-  cursor: default;
 }
 
 /* ######################################################################### */
@@ -648,39 +646,6 @@ div, input, button, span {
 
 .TW3Label {
   padding: 0px !important;
-  cursor: default;
-}
-
-/* ######################################################################### */
-/* TW3CheckBox                                                               */
-/* ######################################################################### */
-
-.TW3CheckBox {
-  cursor: default;
-}
-
-.TW3CheckBoxLabel {
-  cursor: inherit;
-}
-
-.TW3CheckMark {
-  cursor: inherit;
-}
-
-/* ######################################################################### */
-/* TW3RadioButton                                                            */
-/* ######################################################################### */
-
-.TW3RadioButton {
-  cursor: default;
-}
-
-.TW3RadioButtonLabel {
-  cursor: inherit;
-}
-
-.TW3RadioToggle {
-  cursor: inherit;
 }
 
 /* ######################################################################### */
@@ -692,12 +657,11 @@ div, input, button, span {
 }
 
 /* ######################################################################### */
-/* TW3GroupBox and TW3RadioGroup                                             */
+/* TW3GroupBox                                                               */
 /* ######################################################################### */
 
-.TW3GroupBox, .TW3RadioGroup {
+.TW3GroupBox {
   padding: 2px;
-  cursor: default;
   font-family: "Ubuntu", verdana, Helvetica;
   font-name: "Ubuntu";
   font-size: 14px;
@@ -709,7 +673,6 @@ div, input, button, span {
 
 .TW3ListBox {
   padding: 2px;
-  cursor: default;
   margin:  0px;
   background-color: #FFFFFF;
   font-family: "Ubuntu", verdana, Helvetica;
@@ -743,7 +706,6 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 
 .TW3ListMenu {
   padding: 2px;
-  cursor: default;
   font-family:"Ubuntu", verdana, Helvetica;
   font-name:  "Ubuntu";
   font-size:  18px;
@@ -779,7 +741,6 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 
 .TW3Button {
       padding: 2px;
-  cursor: default;
     font-size: 18px;
   font-weight: bold;
         color: #494949;
@@ -800,7 +761,6 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
   min-width:   80px;
   min-height:  32px;
   margin: 5px;
-  cursor: default;
     font-size: 18px;
   font-weight: bold;
         color: #494949;
@@ -824,7 +784,6 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 
 .TW3Dialog {
   padding:  0px;
-  cursor: default;
   border-radius: 8px;
 	z-index: 1000;
 	box-shadow: 0 8px 19px rgba(0,0,0,.9);
@@ -854,7 +813,6 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 /* ######################################################################### */
 
 .TW3ToolButton {
-  cursor: default;
     padding: 2px;
 	color: #FFFFFF;
 }
@@ -866,7 +824,6 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 .TW3Toolbar {
   padding: 2px;
   color:   #FFFFFF;
-  cursor: default;
   flex-flow: row;
   flex-wrap: nowrap;
   align-items: center;
@@ -932,7 +889,6 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 
 .TW3HeaderControl {
   padding: 2px;
-  cursor: default;
   font-size: 24px;
   flex-flow: row;
   flex-wrap: nowrap;
@@ -979,7 +935,6 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 .TW3ToggleSwitch {
   outline: none;
   margin: 0px;
-  cursor: default;
   border-radius: 4px;
   box-shadow: 0px 1px 1px 1px #FFFFFF;
  }
@@ -1067,7 +1022,6 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 
 .TW3ProgressBar {
   padding: 2px;
-  cursor: default;
   -webkit-box-shadow: inset 0 0 10px rgba(rgb(0, 0, 0), 0.9);
      -moz-box-shadow: inset 0 0 10px rgba(rgb(0, 0, 0), 0.9);
        -o-box-shadow: inset 0 0 10px rgba(rgb(0, 0, 0), 0.9);
@@ -1174,6 +1128,7 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 /* ######################################################################### */
 
 .TW3ScrollbarLeftButton {
+  cursor: default;
   border-radius: 4px;
 }
 
@@ -1190,6 +1145,7 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 /* ######################################################################### */
 
 .TW3ScrollbarRightButton {
+  cursor: default;
   border-radius:    4px;
 }
 
@@ -1198,11 +1154,11 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 }
 
 .TW3ScrollbarRightButton:hover  {
-  cursor: inherit;
+  cursor: default;
 }
 
 .TW3ScrollbarRightButton:hover > * {
-  cursor: inherit;
+  cursor: default;
 }
 
 /* ######################################################################### */
@@ -1210,6 +1166,7 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 /* ######################################################################### */
 
 .TW3ScrollbarHandle {
+  cursor: default;
   border-radius:    4px;
   background-color: rgba(174, 167, 159, 0.6);
 }
@@ -1219,7 +1176,6 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 /* ######################################################################### */
 
 .TW3VerticalScrollbar {
-  cursor: default;
   padding-top:      0px;
   padding-bottom:   0px;
   padding-left:     2px;
@@ -1233,7 +1189,6 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 /* ######################################################################### */
 
 .TW3HorizontalScrollbar {
-  cursor: default;
   padding-top:      2px;
   padding-bottom:   2px;
   padding-left:     0px;
@@ -1248,7 +1203,6 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 
 .TW3TabControl {
   padding: 0px;
-  cursor: default;
   font-size:    12px;
   font-family:  "Ubuntu", verdana, Helvetica;
     font-name:  "Ubuntu";
@@ -1257,7 +1211,6 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 
 .TW3Tab {
  background-color: #FFFFFF;
- cursor: default;
 }
 
 .TW3TabHeaders {
@@ -1287,3 +1240,4 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 .TW3TabHeaderSelected {
   color: #FFFFFF;
 }
+
