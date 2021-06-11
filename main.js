@@ -2642,8 +2642,8 @@ var TW3ErrorObject = {
    ,Destroy$:function($){return $.ClassType.Destroy($)}
 };
 TW3ErrorObject.$Intf={
-   IW3ErrorObject:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.SetLastErrorF$1,TW3ErrorObject.SetLastError$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
-   ,IW3ErrorAccess:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
+   IW3ErrorAccess:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
+   ,IW3ErrorObject:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.SetLastErrorF$1,TW3ErrorObject.SetLastError$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
 }
 /// EW3ErrorObject = class (EW3Exception)
 ///  [line: 21, column: 3, file: system.objects]
@@ -4015,8 +4015,8 @@ var TAllocation = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TAllocation.$Intf={
-   IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
-   ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
+   IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
+   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
 }
 function a$340(Self) {
    return ((!Self[0]())?true:false);
@@ -15772,14 +15772,14 @@ var TBinaryData = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TBinaryData.$Intf={
-   IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString$10,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.Clone$1]
+   IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
    ,IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
-   ,IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
    ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
-   ,IBinaryDataImport:[TBinaryData.FromBase64]
+   ,IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString$10,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.Clone$1]
    ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
-   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
+   ,IBinaryDataImport:[TBinaryData.FromBase64]
    ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
+   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
 }
 /// EBinaryData = class (EW3Exception)
 ///  [line: 125, column: 3, file: system.Memory.Buffer]
@@ -17448,7 +17448,7 @@ var TForm1 = {
       $.tab_prog = [];
    }
    /// procedure TForm1.cbThemeChanged(Sender: TObject)
-   ///  [line: 87, column: 18, file: Form1]
+   ///  [line: 86, column: 18, file: Form1]
    ,cbThemeChanged:function(Self, Sender$13) {
       if (!TW3ComboBox.GetSelIndex(Self.cbTheme)) {
          TForm1.FiltrerListe(Self,"");
@@ -17488,15 +17488,14 @@ var TForm1 = {
          }
       }
       TW3TagObj.a$46(Self.lbContenu,html);
-      alert(TW3TagObj.a$45(Self.lbContenu));
    }
    /// procedure TForm1.Form1Activate(Sender: TObject)
-   ///  [line: 118, column: 18, file: Form1]
+   ///  [line: 117, column: 18, file: Form1]
    ,Form1Activate:function(Self, Sender$14) {
       TW3HttpRequest.Get$1(Self.FHttp,"\/res\/urgences_utf8.txt");
    }
    /// procedure TForm1.HandleHttpDataReady(Sender: TW3HttpRequest)
-   ///  [line: 123, column: 18, file: Form1]
+   ///  [line: 122, column: 18, file: Form1]
    ,HandleHttpDataReady:function(Self, Sender$15) {
       var programme = "";
       var i$6 = 0;
@@ -17535,7 +17534,7 @@ var TForm1 = {
       Self.FHttp.OnDataReady = $Event1(Self,TForm1.HandleHttpDataReady);
    }
    /// procedure TForm1.InitializeObject()
-   ///  [line: 95, column: 18, file: Form1]
+   ///  [line: 94, column: 18, file: Form1]
    ,InitializeObject:function(Self) {
       TW3CustomForm.InitializeObject(Self);
       TW3CustomForm.SetCaption(Self,"W3Form");
@@ -17608,7 +17607,7 @@ var TForm1 = {
       TW3Image.LoadFromUrl(Self.imgLogo,"\/images\/logo.png");
    }
    /// procedure TForm1.Resize()
-   ///  [line: 112, column: 18, file: Form1]
+   ///  [line: 111, column: 18, file: Form1]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       TLayout.Resize$8$(Self.FLayout$1,Self);
@@ -21964,8 +21963,8 @@ var TW3DirectoryParser = {
 };
 TW3DirectoryParser.$Intf={
    IW3DirectoryParser:[TW3DirectoryParser.GetPathSeparator,TW3DirectoryParser.GetRootMoniker,TW3DirectoryParser.GetErrorObject,TW3DirectoryParser.IsValidPath,TW3DirectoryParser.HasValidPathChars,TW3DirectoryParser.HasValidFileNameChars,TW3DirectoryParser.IsRelativePath,TW3DirectoryParser.IsPathRooted,TW3DirectoryParser.GetFileNameWithoutExtension,TW3DirectoryParser.GetPathName,TW3DirectoryParser.GetDevice,TW3DirectoryParser.GetFileName,TW3DirectoryParser.GetExtension,TW3DirectoryParser.GetDirectoryName,TW3DirectoryParser.IncludeTrailingPathDelimiter,TW3DirectoryParser.IncludeLeadingPathDelimiter,TW3DirectoryParser.ExcludeLeadingPathDelimiter,TW3DirectoryParser.ExcludeTrailingPathDelimiter,TW3DirectoryParser.ChangeFileExt]
-   ,IW3ErrorObject:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.SetLastErrorF$1,TW3ErrorObject.SetLastError$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
    ,IW3ErrorAccess:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
+   ,IW3ErrorObject:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.SetLastErrorF$1,TW3ErrorObject.SetLastError$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
 }
 /// TW3UnixDirectoryParser = class (TW3DirectoryParser)
 ///  [line: 81, column: 3, file: system.IOUtils]
@@ -22340,8 +22339,8 @@ var TW3UnixDirectoryParser = {
 };
 TW3UnixDirectoryParser.$Intf={
    IW3DirectoryParser:[TW3UnixDirectoryParser.GetPathSeparator,TW3UnixDirectoryParser.GetRootMoniker,TW3DirectoryParser.GetErrorObject,TW3UnixDirectoryParser.IsValidPath,TW3UnixDirectoryParser.HasValidPathChars,TW3UnixDirectoryParser.HasValidFileNameChars,TW3DirectoryParser.IsRelativePath,TW3DirectoryParser.IsPathRooted,TW3UnixDirectoryParser.GetFileNameWithoutExtension,TW3UnixDirectoryParser.GetPathName,TW3UnixDirectoryParser.GetDevice,TW3UnixDirectoryParser.GetFileName,TW3UnixDirectoryParser.GetExtension,TW3UnixDirectoryParser.GetDirectoryName,TW3UnixDirectoryParser.IncludeTrailingPathDelimiter,TW3UnixDirectoryParser.IncludeLeadingPathDelimiter,TW3UnixDirectoryParser.ExcludeLeadingPathDelimiter,TW3UnixDirectoryParser.ExcludeTrailingPathDelimiter,TW3UnixDirectoryParser.ChangeFileExt]
-   ,IW3ErrorObject:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.SetLastErrorF$1,TW3ErrorObject.SetLastError$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
    ,IW3ErrorAccess:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
+   ,IW3ErrorObject:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.SetLastErrorF$1,TW3ErrorObject.SetLastError$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
 }
 /// TPath = class (TObject)
 ///  [line: 107, column: 3, file: system.IOUtils]
