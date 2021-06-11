@@ -15872,12 +15872,12 @@ var TBinaryData = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TBinaryData.$Intf={
-   IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
+   IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString$10,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream$1,TBinaryData.Clone$1]
+   ,IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
    ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
-   ,IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString$10,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream$1,TBinaryData.Clone$1]
    ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
-   ,IBinaryDataImport:[TBinaryData.FromBase64]
    ,IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
+   ,IBinaryDataImport:[TBinaryData.FromBase64]
    ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
    ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
 }
@@ -17562,11 +17562,11 @@ var TFProgramme = {
       TW3MovableControl.SetHeight$(Self.btnVideo$1,32);
       TW3TagContainer.SetComponentName(Self.btnVideo$1,"btnVideo");
       TW3CustomControl._setMouseClick(Self.btnVideo$1,$Event1(Self,TFProgramme.btnVideoClick$1));
-      Self.scroll$2 = TW3TagContainer.Create$81$($New(TW3Scrollbox),Self);
-      TW3MovableControl.SetWidth$(Self.scroll$2,272);
-      TW3MovableControl.SetTop$(Self.scroll$2,168);
-      TW3MovableControl.SetLeft$(Self.scroll$2,8);
-      TW3MovableControl.SetHeight$(Self.scroll$2,128);
+      Self.scroll$2 = TW3TagContainer.Create$81$($New(TW3NativeScrollBox),Self);
+      TW3MovableControl.SetWidth$(Self.scroll$2,280);
+      TW3MovableControl.SetTop$(Self.scroll$2,176);
+      TW3MovableControl.SetLeft$(Self.scroll$2,16);
+      TW3MovableControl.SetHeight$(Self.scroll$2,120);
       TW3TagContainer.SetComponentName(Self.scroll$2,"scroll");
       Self.lbContenu$1 = TW3TagContainer.Create$81$($New(TW3DIVHtmlElement),Self.scroll$2);
       Self.FLayout$2 = Layout$1.Client(Layout$1,TLayoutConfig.Margins$(Layout$1.Spacing$1(Layout$1,5),5),[Layout$1.Top$10(Layout$1,Self.imgLogo$1), Layout$1.Top$10(Layout$1,Self.header$1), Layout$1.Top$10(Layout$1,Self.lbTheme), Layout$1.Top$10(Layout$1,Self.cbTheme), Layout$1.Client$1(Layout$1,Layout$1.Margins$2(Layout$1,5),Self.scroll$2), Layout$1.Bottom$7(Layout$1,Self.panMenu$1)].slice());
@@ -21845,81 +21845,6 @@ TW3DIVHtmlElement.$Intf={
    IW3ComponentState:[TW3TagObj.AddToComponentState,TW3TagObj.RemoveFromComponentState]
    ,IW3OwnedObjectAccess:[TW3OwnedObject.AcceptOwner,TW3OwnedObject.SetOwner,TW3OwnedObject.GetOwner]
 }
-/// TW3Scrollbox = class (TW3ScrollControl)
-///  [line: 30, column: 3, file: SmartCL.Controls.ScrollBox]
-var TW3Scrollbox = {
-   $ClassName:"TW3Scrollbox",$Parent:TW3ScrollControl
-   ,$Init:function ($) {
-      TW3ScrollControl.$Init($);
-      $.FOnScroll$1 = null;
-   }
-   /// procedure TW3Scrollbox.InitializeObject()
-   ///  [line: 62, column: 24, file: SmartCL.Controls.ScrollBox]
-   ,InitializeObject:function(Self) {
-      TW3ScrollControl.InitializeObject(Self);
-      TW3ScrollControl.SetBarSize(Self,20);
-      TW3ScrollControl.SetScrollBars(Self,2);
-      Self.FScrollController.FOnScrolling = function (Sender$35) {
-         if (Self.FOnScroll$1) {
-            Self.FOnScroll$1(Self,Math.abs(Self.FScrollController.FContentLeft),Math.abs(Self.FScrollController.FContentTop));
-         }
-      };
-   }
-   /// procedure TW3Scrollbox.SetScrollBarSize(NewSize: Integer)
-   ///  [line: 83, column: 24, file: SmartCL.Controls.ScrollBox]
-   ,SetScrollBarSize:function(Self, NewSize$7) {
-      NewSize$7 = TInteger.EnsureRange(NewSize$7,4,100);
-      if (NewSize$7!=TW3ScrollControl.GetBarSize(Self)) {
-         TW3ScrollControl.SetBarSize(Self,NewSize$7);
-         TW3MovableControl.Invalidate$(Self);
-      }
-   }
-   /// procedure TW3Scrollbox.StyleTagObject()
-   ///  [line: 75, column: 24, file: SmartCL.Controls.ScrollBox]
-   ,StyleTagObject:function(Self) {
-      TW3MovableControl.StyleTagObject(Self);
-      TW3CustomControl.SetBorderType(Self,8);
-   }
-   ,Destroy:TW3TagObj.Destroy
-   ,AcceptOwner:TW3OwnedObject.AcceptOwner
-   ,Create$11:TW3TagObj.Create$11
-   ,FinalizeObject:TW3ScrollControl.FinalizeObject
-   ,InitializeObject$:function($){return $.ClassType.InitializeObject($)}
-   ,AfterUpdate:TW3MovableControl.AfterUpdate
-   ,CreationFlags:TW3TagObj.CreationFlags
-   ,HookEvents:TW3CustomControl.HookEvents
-   ,MakeElementTagId:TW3TagObj.MakeElementTagId
-   ,MakeElementTagObj:TW3TagObj.MakeElementTagObj
-   ,Showing:TW3MovableControl.Showing
-   ,StyleTagObject$:function($){return $.ClassType.StyleTagObject($)}
-   ,UnHookEvents:TW3CustomControl.UnHookEvents
-   ,ChildAdded:TW3TagContainer.ChildAdded
-   ,ChildRemoved:TW3TagContainer.ChildRemoved
-   ,Create$81:TW3TagContainer.Create$81
-   ,RegisterChild:TW3TagContainer.RegisterChild
-   ,GetHeight:TW3MovableControl.GetHeight
-   ,GetWidth:TW3MovableControl.GetWidth
-   ,Invalidate:TW3MovableControl.Invalidate
-   ,MoveTo:TW3MovableControl.MoveTo
-   ,ObjectReady:TW3MovableControl.ObjectReady
-   ,Resize:TW3ScrollControl.Resize
-   ,SetBounds$1:TW3MovableControl.SetBounds$1
-   ,SetBounds:TW3MovableControl.SetBounds
-   ,SetHeight:TW3MovableControl.SetHeight
-   ,SetLeft:TW3MovableControl.SetLeft
-   ,SetSize$2:TW3MovableControl.SetSize$2
-   ,SetTop:TW3MovableControl.SetTop
-   ,SetWidth:TW3MovableControl.SetWidth
-   ,CBClick:TW3CustomControl.CBClick
-   ,CBKeyUp:TW3CustomControl.CBKeyUp
-   ,Dispatch:TW3CustomControl.Dispatch
-   ,GetEnabled$1:TW3CustomControl.GetEnabled$1
-   ,SetEnabled$1:TW3CustomControl.SetEnabled$1
-};
-TW3Scrollbox.$Intf={
-   IW3ComponentState:[TW3TagObj.AddToComponentState,TW3TagObj.RemoveFromComponentState]
-   ,IW3OwnedObjectAccess:[TW3OwnedObject.AcceptOwner,TW3OwnedObject.SetOwner,TW3OwnedObject.GetOwner]
-}
 /// TW3NativeScrollBox = class (TW3CustomControl)
 ///  [line: 46, column: 3, file: SmartCL.Controls.ScrollBox]
 var TW3NativeScrollBox = {
@@ -22359,7 +22284,7 @@ var TW3TabHeaders = {
       Self.FItems = TObjectList.Create$127($New(TObjectList));
       TW3ScrollController.SetDirection$1(Self.FScrollController,1);
       TW3ScrollController.SetScrollSpeed(Self.FScrollController,100);
-      TW3CustomControl._setMouseWheel(Self,function (Sender$36, Shift$3, WheelDelta$3, MousePos$5, Handled$6) {
+      TW3CustomControl._setMouseWheel(Self,function (Sender$35, Shift$3, WheelDelta$3, MousePos$5, Handled$6) {
          TW3ScrollController.MomentumScrollTo(Self.FScrollController,(Self.FScrollController.FContentLeft+$Sign(WheelDelta$3)*TW3MovableControl.GetWidth$(Self)),0);
          Handled$6.v = true;
       });
@@ -22414,8 +22339,8 @@ var TW3TabHeaders = {
          if (Header$3.FSelected) {
             TW3TagStyle.Add$2(TW3CustomControl.GetTagStyle(Header$3),"TW3TabHeaderSelected");
          }
-         TW3CustomControl._setMouseClick(Header$3,function (Sender$37) {
-            TW3TabControl.SetTabIndex($As(TW3TagContainer.a$47(Self),TW3TabControl),$As(Sender$37,TW3TabHeader).FIndex$1);
+         TW3CustomControl._setMouseClick(Header$3,function (Sender$36) {
+            TW3TabControl.SetTabIndex($As(TW3TagContainer.a$47(Self),TW3TabControl),$As(Sender$36,TW3TabHeader).FIndex$1);
          });
       }
    }
@@ -22822,7 +22747,7 @@ var TW3TabControl = {
    }
    /// procedure TW3TabControl.HandleScrollChange(Sender: TObject)
    ///  [line: 393, column: 25, file: SmartCL.Controls.TabControl]
-   ,HandleScrollChange:function(Self, Sender$38) {
+   ,HandleScrollChange:function(Self, Sender$37) {
       var x$102 = 0;
       var i$24 = 0;
       var Tab$2 = null;
@@ -22858,7 +22783,7 @@ var TW3TabControl = {
    }
    /// procedure TW3TabControl.HandleScrollEnd(Sender: TObject)
    ///  [line: 436, column: 25, file: SmartCL.Controls.TabControl]
-   ,HandleScrollEnd:function(Self, Sender$39) {
+   ,HandleScrollEnd:function(Self, Sender$38) {
       var PrevTab = null;
       if (!$SetIn(Self.FComponentState,8,0,9)) {
          PrevTab = TW3TabControl.GetTab(Self,Self.FTabIndex);
@@ -23196,12 +23121,12 @@ var TFVideos = {
    }
    /// procedure TFVideos.btnProgClick(Sender: TObject)
    ///  [line: 38, column: 20, file: FVideos]
-   ,btnProgClick:function(Self, Sender$40) {
+   ,btnProgClick:function(Self, Sender$39) {
       TW3CustomApplication.GotoForm(Application(),"FProgramme",0);
    }
    /// procedure TFVideos.FVideosResize(Sender: TObject)
    ///  [line: 43, column: 20, file: FVideos]
-   ,FVideosResize:function(Self, Sender$41) {
+   ,FVideosResize:function(Self, Sender$40) {
       TLayout.Resize$8$(Self.FLayout$1,Self);
    }
    /// procedure TFVideos.InitializeForm()
@@ -24473,8 +24398,8 @@ var TW3VirtualFileSystemObject = {
    }
    /// procedure TW3VirtualFileSystemObject.SetSize(const NewSize: Integer)
    ///  [line: 1559, column: 38, file: System.FileSystem.Virtual]
-   ,SetSize$13:function(Self, NewSize$8) {
-      Self.FSize$3 = NewSize$8;
+   ,SetSize$13:function(Self, NewSize$7) {
+      Self.FSize$3 = NewSize$7;
    }
    /// procedure TW3VirtualFileSystemObject.WriteFileObjectData(const Writer: TStreamWriter)
    ///  [line: 1492, column: 38, file: System.FileSystem.Virtual]
