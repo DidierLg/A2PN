@@ -4174,8 +4174,8 @@ var TAllocation = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TAllocation.$Intf={
-   IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
-   ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
+   IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
+   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
 }
 function a$356(Self) {
    return ((!Self[0]())?true:false);
@@ -15873,13 +15873,13 @@ var TBinaryData = {
 };
 TBinaryData.$Intf={
    IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
-   ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
-   ,IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString$10,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream$1,TBinaryData.Clone$1]
-   ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
    ,IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
+   ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
+   ,IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString$10,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream$1,TBinaryData.Clone$1]
+   ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
    ,IBinaryDataImport:[TBinaryData.FromBase64]
-   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
    ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
+   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
 }
 /// EBinaryData = class (EW3Exception)
 ///  [line: 125, column: 3, file: system.Memory.Buffer]
@@ -17560,7 +17560,7 @@ var TFProgramme = {
       TW3MovableControl.SetTop$(Self.btnListe$1,8);
       TW3MovableControl.SetLeft$(Self.btnListe$1,104);
       TW3MovableControl.SetHeight$(Self.btnListe$1,32);
-      TW3CustomControl.SetEnabled$1$(Self.btnListe$1,false);
+      TW3CustomControl.SetEnabled$1$(Self.btnListe$1,true);
       TW3TagContainer.SetComponentName(Self.btnListe$1,"btnListe");
       Self.btnVideo$1 = TW3TagContainer.Create$81$($New(TW3ToolButton),Self.panMenu$1);
       TW3ToolButton.SetCaption$5(Self.btnVideo$1,"Vidéos");
@@ -23152,7 +23152,7 @@ var TFVideos = {
       TW3TagContainer.SetComponentName(Self.imgLogo,"imgLogo");
       Self.header = TW3TagContainer.Create$81$($New(TW3HeaderControl),Self);
       TW3HeaderControl.a$124(Self.header,">");
-      TW3HeaderControl.a$126(Self.header,"PROGRAMME");
+      TW3HeaderControl.a$126(Self.header,"VIDEOS");
       TW3HeaderControl.a$122(Self.header,"<");
       TW3MovableControl.SetWidth$(Self.header,248);
       TW3MovableControl.SetTop$(Self.header,72);
@@ -23181,7 +23181,7 @@ var TFVideos = {
       TW3MovableControl.SetTop$(Self.btnListe,8);
       TW3MovableControl.SetLeft$(Self.btnListe,96);
       TW3MovableControl.SetHeight$(Self.btnListe,32);
-      TW3CustomControl.SetEnabled$1$(Self.btnListe,false);
+      TW3CustomControl.SetEnabled$1$(Self.btnListe,true);
       TW3TagContainer.SetComponentName(Self.btnListe,"btnListe");
       Self.btnVideo = TW3TagContainer.Create$81$($New(TW3ToolButton),Self.panMenu);
       TW3ToolButton.SetCaption$5(Self.btnVideo,"Vidéos");
@@ -24614,8 +24614,8 @@ var TW3VirtualFileSystemFolder = {
    ,WriteFileObjectData$:function($){return $.ClassType.WriteFileObjectData.apply($.ClassType, arguments)}
 };
 TW3VirtualFileSystemFolder.$Intf={
-   IW3FileSystemObject:[TW3VirtualFileSystemObject.SetRoot,TW3VirtualFileSystemObject.SetName$5,TW3VirtualFileSystemObject.SetSize$13,TW3VirtualFileSystemObject.GetPath$2,TW3VirtualFileSystemObject.GetName$5,TW3VirtualFileSystemObject.GetSize$7,TW3VirtualFileSystemFolder.WriteFileObjectData,TW3VirtualFileSystemFolder.ReadFileObjectData]
-   ,IW3FileSystemFolder:[TW3VirtualFileSystemFolder.GetLocalFileObj,TW3VirtualFileSystemFolder.AddChildObject,TW3VirtualFileSystemFolder.RemoveChildObject]
+   IW3FileSystemFolder:[TW3VirtualFileSystemFolder.GetLocalFileObj,TW3VirtualFileSystemFolder.AddChildObject,TW3VirtualFileSystemFolder.RemoveChildObject]
+   ,IW3FileSystemObject:[TW3VirtualFileSystemObject.SetRoot,TW3VirtualFileSystemObject.SetName$5,TW3VirtualFileSystemObject.SetSize$13,TW3VirtualFileSystemObject.GetPath$2,TW3VirtualFileSystemObject.GetName$5,TW3VirtualFileSystemObject.GetSize$7,TW3VirtualFileSystemFolder.WriteFileObjectData,TW3VirtualFileSystemFolder.ReadFileObjectData]
    ,IW3ErrorAccess:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
    ,IW3ErrorObject:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.SetLastErrorF$1,TW3ErrorObject.SetLastError$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
 }
@@ -25069,8 +25069,8 @@ var TW3VirtualFileSystem = {
    ,WriteFileObjectData:TW3VirtualFileSystemFolder.WriteFileObjectData
 };
 TW3VirtualFileSystem.$Intf={
-   IW3FileSystemObject:[TW3VirtualFileSystemObject.SetRoot,TW3VirtualFileSystemObject.SetName$5,TW3VirtualFileSystemObject.SetSize$13,TW3VirtualFileSystemObject.GetPath$2,TW3VirtualFileSystemObject.GetName$5,TW3VirtualFileSystemObject.GetSize$7,TW3VirtualFileSystemFolder.WriteFileObjectData,TW3VirtualFileSystemFolder.ReadFileObjectData]
-   ,IW3VirtualFileSystem:[TW3VirtualFileSystem.FindFileObject,TW3VirtualFileSystem.RegisterNewFileSystemObject,TW3VirtualFileSystem.UnRegisterFileSystemObject,TW3VirtualFileSystem.DataWrittenToFile,TW3VirtualFileSystem.DataReadFromFile]
+   IW3VirtualFileSystem:[TW3VirtualFileSystem.FindFileObject,TW3VirtualFileSystem.RegisterNewFileSystemObject,TW3VirtualFileSystem.UnRegisterFileSystemObject,TW3VirtualFileSystem.DataWrittenToFile,TW3VirtualFileSystem.DataReadFromFile]
+   ,IW3FileSystemObject:[TW3VirtualFileSystemObject.SetRoot,TW3VirtualFileSystemObject.SetName$5,TW3VirtualFileSystemObject.SetSize$13,TW3VirtualFileSystemObject.GetPath$2,TW3VirtualFileSystemObject.GetName$5,TW3VirtualFileSystemObject.GetSize$7,TW3VirtualFileSystemFolder.WriteFileObjectData,TW3VirtualFileSystemFolder.ReadFileObjectData]
    ,IW3FileSystemFolder:[TW3VirtualFileSystemFolder.GetLocalFileObj,TW3VirtualFileSystemFolder.AddChildObject,TW3VirtualFileSystemFolder.RemoveChildObject]
    ,IW3ErrorAccess:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
    ,IW3ErrorObject:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.SetLastErrorF$1,TW3ErrorObject.SetLastError$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
