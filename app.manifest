@@ -1,11 +1,12 @@
 CACHE MANIFEST
 # Offline cache version 0.0.1
-# id:52777
+# id:92173
 
 CACHE:
 index.html
 res/app.css
 res/urgences_utf8.txt
+res/entete.png
 lib/ace.js
 lib/ext-beautify.js
 lib/ext-chromevox.js
