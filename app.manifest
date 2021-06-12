@@ -1,9 +1,18 @@
 CACHE MANIFEST
 # Offline cache version 0.0.1
-# id:45094
+# id:66696
 
 CACHE:
 index.html
 res/app.css
 res/urgences_utf8.txt
+res/pied.png
+res/logo.png
+res/btnC.png
+res/btnP.png
+res/btnV.png
+res/btnVide.png
+res/logo_trsp.png
+res/entete.png
+res/fond_JPN.png
 lib/polyfill.custom.events.js
