@@ -1,41 +1,9 @@
 CACHE MANIFEST
 # Offline cache version 0.0.1
-# id:73949
+# id:45094
 
 CACHE:
 index.html
 res/app.css
 res/urgences_utf8.txt
-res/entete.png
-lib/ace.js
-lib/ext-beautify.js
-lib/ext-chromevox.js
-lib/ext-elastic_tabstops_lite.js
-lib/ext-emmet.js
-lib/ext-error_marker.js
-lib/ext-keybinding_menu.js
-lib/ext-language_tools.js
-lib/ext-linking.js
-lib/ext-modelist.js
-lib/ext-old_ie.js
-lib/ext-searchbox.js
-lib/ext-settings_menu.js
-lib/ext-spellcheck.js
-lib/ext-split.js
-lib/ext-static_highlight.js
-lib/ext-statusbar.js
-lib/ext-textarea.js
-lib/ext-themelist.js
-lib/ext-whitespace.js
-lib/keybinding-emacs.js
-lib/keybinding-vim.js
-lib/worker-coffee.js
-lib/worker-css.js
-lib/worker-html.js
-lib/worker-javascript.js
-lib/worker-json.js
-lib/worker-lua.js
-lib/worker-php.js
-lib/worker-xml.js
-lib/worker-xquery.js
 lib/polyfill.custom.events.js
