@@ -1287,3 +1287,9 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 .TW3TabHeaderSelected {
   color: #FFFFFF;
 }
+
+.lbCTM {
+  color: #DDDDDD;
+  font-style: italic;
+  font-size: smaller;
+}
