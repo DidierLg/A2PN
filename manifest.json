@@ -17,6 +17,5 @@
 				"background.js"
 			]
 		}
-	},
-	"content_security_policy" : "default-src 'self' data: chrome-extension-resource: 'unsafe-inline'"
+	}
 }
