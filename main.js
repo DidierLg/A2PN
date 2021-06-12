@@ -15641,12 +15641,12 @@ var TBinaryData = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TBinaryData.$Intf={
-   IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
-   ,IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
-   ,IBinaryDataImport:[TBinaryData.FromBase64]
+   IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
+   ,IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString$10,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.Clone$1]
+   ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
    ,IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
    ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
-   ,IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString$10,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.Clone$1]
+   ,IBinaryDataImport:[TBinaryData.FromBase64]
    ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
    ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
 }
@@ -17162,7 +17162,7 @@ var TFProgramme = {
    $ClassName:"TFProgramme",$Parent:TW3Form
    ,$Init:function ($) {
       TW3Form.$Init($);
-      $.cbTheme = $.FHttp = $.FLayout$1 = $.imgListe = $.imgLogo = $.imgPied = $.imgProg = $.imgTitre = $.imgVide = $.lbContenu = $.lbTheme = $.scroll$1 = null;
+      $.cbTheme = $.FHttp = $.FLayout$1 = $.imgListe = $.imgLogo = $.imgPhare = $.imgPied = $.imgProg = $.imgTitre = $.imgVide = $.lbContenu = $.lbTheme = $.scroll$1 = null;
       $.tab_prog = [];
    }
    /// procedure TFProgramme.cbThemeChanged(Sender: TObject)
@@ -17269,7 +17269,7 @@ var TFProgramme = {
       TW3TagContainer.SetComponentName(Self.scroll$1,"scroll");
       Self.imgLogo = TW3TagContainer.Create$81$($New(TW3Image),Self);
       TW3Image.SetFit(Self.imgLogo,1);
-      TW3MovableControl.SetWidth$(Self.imgLogo,400);
+      TW3MovableControl.SetWidth$(Self.imgLogo,337);
       TW3MovableControl.SetHeight$(Self.imgLogo,60);
       TW3TagContainer.SetComponentName(Self.imgLogo,"imgLogo");
       Self.lbTheme = TW3TagContainer.Create$81$($New(TW3Label),Self);
@@ -17293,29 +17293,36 @@ var TFProgramme = {
       TW3MovableControl.SetHeight$(Self.imgPied,24);
       TW3TagContainer.SetComponentName(Self.imgPied,"imgPied");
       Self.imgProg = TW3TagContainer.Create$81$($New(TW3Image),Self);
-      TW3MovableControl.SetWidth$(Self.imgProg,128);
+      TW3MovableControl.SetWidth$(Self.imgProg,96);
       TW3MovableControl.SetTop$(Self.imgProg,64);
-      TW3MovableControl.SetHeight$(Self.imgProg,32);
+      TW3MovableControl.SetLeft$(Self.imgProg,104);
+      TW3MovableControl.SetHeight$(Self.imgProg,24);
       TW3TagContainer.SetComponentName(Self.imgProg,"imgProg");
       Self.imgListe = TW3TagContainer.Create$81$($New(TW3Image),Self);
-      TW3MovableControl.SetWidth$(Self.imgListe,128);
+      TW3MovableControl.SetWidth$(Self.imgListe,96);
       TW3MovableControl.SetTop$(Self.imgListe,64);
-      TW3MovableControl.SetLeft$(Self.imgListe,136);
-      TW3MovableControl.SetHeight$(Self.imgListe,32);
+      TW3MovableControl.SetLeft$(Self.imgListe,216);
+      TW3MovableControl.SetHeight$(Self.imgListe,24);
       TW3TagContainer.SetComponentName(Self.imgListe,"imgListe");
       Self.imgVide = TW3TagContainer.Create$81$($New(TW3Image),Self);
-      TW3MovableControl.SetWidth$(Self.imgVide,128);
+      TW3MovableControl.SetWidth$(Self.imgVide,96);
       TW3MovableControl.SetTop$(Self.imgVide,64);
-      TW3MovableControl.SetLeft$(Self.imgVide,272);
-      TW3MovableControl.SetHeight$(Self.imgVide,32);
+      TW3MovableControl.SetLeft$(Self.imgVide,336);
+      TW3MovableControl.SetHeight$(Self.imgVide,24);
       TW3TagContainer.SetComponentName(Self.imgVide,"imgVide");
       Self.imgTitre = TW3TagContainer.Create$81$($New(TW3Image),Self);
       TW3MovableControl.SetWidth$(Self.imgTitre,128);
-      TW3MovableControl.SetLeft$(Self.imgTitre,416);
+      TW3MovableControl.SetLeft$(Self.imgTitre,360);
       TW3MovableControl.SetHeight$(Self.imgTitre,56);
       TW3TagContainer.SetComponentName(Self.imgTitre,"imgTitre");
+      Self.imgPhare = TW3TagContainer.Create$81$($New(TW3Image),Self);
+      TW3MovableControl.SetWidth$(Self.imgPhare,96);
+      TW3MovableControl.SetTop$(Self.imgPhare,64);
+      TW3MovableControl.SetHeight$(Self.imgPhare,24);
+      TW3TagContainer.SetComponentName(Self.imgPhare,"imgPhare");
       TW3Image.LoadFromUrl(Self.imgLogo,"res\/entete.png");
       TW3Image.LoadFromUrl(Self.imgTitre,"res\/btnVide.png");
+      TW3Image.LoadFromUrl(Self.imgPhare,"res\/btnX.png");
       TW3Image.LoadFromUrl(Self.imgProg,"res\/btnP.png");
       TW3Image.LoadFromUrl(Self.imgListe,"res\/btnC.png");
       TW3Image.LoadFromUrl(Self.imgVide,"res\/btnVide.png");
@@ -17325,7 +17332,7 @@ var TFProgramme = {
       Self.lbContenu = TW3TagContainer.Create$81$($New(TW3DIVHtmlElement),Self.scroll$1);
       TW3ControlBackground.FromURL(TW3MovableControl.GetBackGround(Self),"res\/fond_JPN.png");
       TW3ControlBackgroundSize.SetMode(TW3MovableControl.GetBackGround(Self).FSize$2,4);
-      Self.FLayout$1 = Layout$1.Client(Layout$1,TLayoutConfig.Margins$(Layout$1.Spacing$1(Layout$1,5),5),[Layout$1.Top$7(Layout$1,Layout$1.Margins$2(Layout$1,0),[Layout$1.Left$9(Layout$1,Self.imgLogo), Layout$1.Client$3(Layout$1,Self.imgTitre)].slice()), Layout$1.Top$7(Layout$1,Layout$1.Margins$2(Layout$1,5),[Layout$1.Left$9(Layout$1,Self.imgProg), Layout$1.Left$9(Layout$1,Self.imgListe), Layout$1.Client$3(Layout$1,Self.imgVide)].slice()), Layout$1.Top$10(Layout$1,Self.lbTheme), Layout$1.Top$10(Layout$1,Self.cbTheme), Layout$1.Client(Layout$1,Layout$1.Margins$2(Layout$1,5),[Self.scroll$1].slice()), Layout$1.Bottom$7(Layout$1,Self.imgPied)].slice());
+      Self.FLayout$1 = Layout$1.Client(Layout$1,TLayoutConfig.Margins$(Layout$1.Spacing$1(Layout$1,5),5),[Layout$1.Top$7(Layout$1,Layout$1.Margins$2(Layout$1,0),[Layout$1.Left$9(Layout$1,Self.imgLogo), Layout$1.Client$3(Layout$1,Self.imgTitre)].slice()), Layout$1.Top$7(Layout$1,Layout$1.Margins$2(Layout$1,5),[Layout$1.Left$9(Layout$1,Self.imgPhare), Layout$1.Left$9(Layout$1,Self.imgProg), Layout$1.Left$9(Layout$1,Self.imgListe), Layout$1.Client$3(Layout$1,Self.imgVide)].slice()), Layout$1.Top$10(Layout$1,Self.lbTheme), Layout$1.Top$10(Layout$1,Self.cbTheme), Layout$1.Client(Layout$1,Layout$1.Margins$2(Layout$1,5),[Self.scroll$1].slice()), Layout$1.Bottom$7(Layout$1,Self.imgPied)].slice());
    }
    /// procedure TFProgramme.Resize()
    ///  [line: 131, column: 23, file: FProgramme]
