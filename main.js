@@ -3955,8 +3955,8 @@ var TAllocation = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TAllocation.$Intf={
-   IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
-   ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
+   IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
+   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
 }
 function a$323(Self) {
    return ((!Self[0]())?true:false);
@@ -15642,13 +15642,13 @@ var TBinaryData = {
 };
 TBinaryData.$Intf={
    IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
+   ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
+   ,IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
+   ,IBinaryDataImport:[TBinaryData.FromBase64]
    ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
    ,IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString$10,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.Clone$1]
-   ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
-   ,IBinaryDataImport:[TBinaryData.FromBase64]
-   ,IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
-   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
    ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
+   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
 }
 /// EBinaryData = class (EW3Exception)
 ///  [line: 125, column: 3, file: system.Memory.Buffer]
@@ -17162,12 +17162,12 @@ var TFProgramme = {
    $ClassName:"TFProgramme",$Parent:TW3Form
    ,$Init:function ($) {
       TW3Form.$Init($);
-      $.cbTheme = $.FHttpPhare = $.FHttpProg = $.FLayout$1 = $.imgListe = $.imgLogo = $.imgPhare = $.imgPied = $.imgProg = $.imgTitre = $.imgVide = $.lbContenu = $.lbTheme = $.scroll$1 = null;
+      $.cbTheme = $.FHttpPhare = $.FHttpProg = $.FLayout$1 = $.imgListe = $.imgLogo = $.imgPhare = $.imgPied = $.imgProg = $.imgTitre = $.imgVide = $.lbContenu = $.lbCTM = $.lbTheme = $.scroll$1 = null;
       $.tab_phare = [];
       $.tab_prog = [];
    }
    /// procedure TFProgramme.cbThemeChanged(Sender: TObject)
-   ///  [line: 68, column: 23, file: FProgramme]
+   ///  [line: 69, column: 23, file: FProgramme]
    ,cbThemeChanged:function(Self, Sender$12) {
       if (!TW3ComboBox.GetSelIndex(Self.cbTheme)) {
          TFProgramme.FiltrerListe(Self,"");
@@ -17176,7 +17176,7 @@ var TFProgramme = {
       }
    }
    /// procedure TFProgramme.FiltrerListe(theme: String)
-   ///  [line: 127, column: 23, file: FProgramme]
+   ///  [line: 128, column: 23, file: FProgramme]
    ,FiltrerListe:function(Self, theme) {
       var i$5 = 0;
       var p = 0;
@@ -17209,31 +17209,31 @@ var TFProgramme = {
       TW3TagObj.a$46(Self.lbContenu,html);
    }
    /// procedure TFProgramme.Form1Resize(Sender: TObject)
-   ///  [line: 53, column: 23, file: FProgramme]
+   ///  [line: 54, column: 23, file: FProgramme]
    ,Form1Resize:function(Self, Sender$13) {
       TLayout.Resize$8$(Self.FLayout$1,Self);
    }
    /// procedure TFProgramme.FProgrammeActivate(Sender: TObject)
-   ///  [line: 90, column: 23, file: FProgramme]
+   ///  [line: 91, column: 23, file: FProgramme]
    ,FProgrammeActivate:function(Self, Sender$14) {
       TW3HttpRequest.Get$1(Self.FHttpProg,"\/res\/urgences_utf8.txt");
    }
    /// procedure TFProgramme.imgPhareClick(Sender: TObject)
-   ///  [line: 76, column: 23, file: FProgramme]
+   ///  [line: 77, column: 23, file: FProgramme]
    ,imgPhareClick:function(Self, Sender$15) {
       TW3HttpRequest.Get$1(Self.FHttpPhare,"\/res\/mesures_phare_utf8.txt");
       TW3MovableControl.SetVisible(Self.lbTheme,false);
       TW3MovableControl.SetVisible(Self.cbTheme,false);
    }
    /// procedure TFProgramme.imgProgClick(Sender: TObject)
-   ///  [line: 83, column: 23, file: FProgramme]
+   ///  [line: 84, column: 23, file: FProgramme]
    ,imgProgClick:function(Self, Sender$16) {
       TW3MovableControl.SetVisible(Self.lbTheme,true);
       TW3MovableControl.SetVisible(Self.cbTheme,true);
       Self.cbTheme.FOnChanged(Self);
    }
    /// procedure TFProgramme.InitializeForm()
-   ///  [line: 58, column: 23, file: FProgramme]
+   ///  [line: 59, column: 23, file: FProgramme]
    ,InitializeForm:function(Self) {
       TW3CustomForm.InitializeForm(Self);
       Self.FHttpProg = TW3HttpRequest.Create$151($New(TW3HttpRequest));
@@ -17242,7 +17242,7 @@ var TFProgramme = {
       Self.FHttpPhare.OnDataReady = $Event1(Self,TFProgramme.PhareDataReady);
    }
    /// procedure TFProgramme.InitializeObject()
-   ///  [line: 182, column: 23, file: FProgramme]
+   ///  [line: 183, column: 23, file: FProgramme]
    ,InitializeObject:function(Self) {
       TW3CustomForm.InitializeObject(Self);
       TW3CustomForm.SetCaption(Self,"W3Form");
@@ -17252,7 +17252,7 @@ var TFProgramme = {
       TW3MovableControl._SetOnResized(Self,$Event1(Self,TFProgramme.Form1Resize));
       Self.scroll$1 = TW3TagContainer.Create$81$($New(TW3NativeScrollBox),Self);
       TW3MovableControl.SetWidth$(Self.scroll$1,472);
-      TW3MovableControl.SetTop$(Self.scroll$1,176);
+      TW3MovableControl.SetTop$(Self.scroll$1,192);
       TW3MovableControl.SetLeft$(Self.scroll$1,8);
       TW3MovableControl.SetHeight$(Self.scroll$1,104);
       TW3MovableControl.SetColor(Self.scroll$1,16777215);
@@ -17265,13 +17265,13 @@ var TFProgramme = {
       Self.lbTheme = TW3TagContainer.Create$81$($New(TW3Label),Self);
       TW3Label.SetCaption$2(Self.lbTheme,"Sélectionnez un thème");
       TW3MovableControl.SetWidth$(Self.lbTheme,480);
-      TW3MovableControl.SetTop$(Self.lbTheme,104);
+      TW3MovableControl.SetTop$(Self.lbTheme,120);
       TW3MovableControl.SetHeight$(Self.lbTheme,24);
       TW3MovableControl.SetColor(Self.lbTheme,16777215);
       TW3TagContainer.SetComponentName(Self.lbTheme,"lbTheme");
       Self.cbTheme = TW3TagContainer.Create$81$($New(TW3ComboBox),Self);
       TW3MovableControl.SetWidth$(Self.cbTheme,480);
-      TW3MovableControl.SetTop$(Self.cbTheme,128);
+      TW3MovableControl.SetTop$(Self.cbTheme,152);
       TW3MovableControl.SetHeight$(Self.cbTheme,32);
       TW3MovableControl.SetTransparent(Self.cbTheme,true);
       TW3MovableControl.SetColor(Self.cbTheme,16777215);
@@ -17279,7 +17279,7 @@ var TFProgramme = {
       TW3CustomControl._setChanged(Self.cbTheme,$Event1(Self,TFProgramme.cbThemeChanged));
       Self.imgPied = TW3TagContainer.Create$81$($New(TW3Image),Self);
       TW3MovableControl.SetWidth$(Self.imgPied,480);
-      TW3MovableControl.SetTop$(Self.imgPied,288);
+      TW3MovableControl.SetTop$(Self.imgPied,304);
       TW3MovableControl.SetHeight$(Self.imgPied,24);
       TW3TagContainer.SetComponentName(Self.imgPied,"imgPied");
       Self.imgProg = TW3TagContainer.Create$81$($New(TW3Image),Self);
@@ -17312,6 +17312,15 @@ var TFProgramme = {
       TW3MovableControl.SetHeight$(Self.imgPhare,24);
       TW3TagContainer.SetComponentName(Self.imgPhare,"imgPhare");
       TW3CustomControl._setMouseClick(Self.imgPhare,$Event1(Self,TFProgramme.imgPhareClick));
+      Self.lbCTM = TW3TagContainer.Create$81$($New(TW3Label),Self);
+      TW3Label.SetCaption$2(Self.lbCTM,"Election des Conseillers Territoriaux des 20 & 27 Juin 2021");
+      TW3MovableControl.SetWidth$(Self.lbCTM,480);
+      TW3MovableControl.SetTop$(Self.lbCTM,96);
+      TW3MovableControl.SetStyleClass(Self.lbCTM,"lbCTM");
+      TW3MovableControl.SetLeft$(Self.lbCTM,8);
+      TW3MovableControl.SetHeight$(Self.lbCTM,24);
+      TW3MovableControl.SetColor(Self.lbCTM,16777215);
+      TW3TagContainer.SetComponentName(Self.lbCTM,"lbCTM");
       TW3Image.LoadFromUrl(Self.imgLogo,"res\/entete.png");
       TW3Image.LoadFromUrl(Self.imgTitre,"res\/btnVide.png");
       TW3Image.LoadFromUrl(Self.imgPhare,"res\/btnX.png");
@@ -17324,10 +17333,10 @@ var TFProgramme = {
       Self.lbContenu = TW3TagContainer.Create$81$($New(TW3DIVHtmlElement),Self.scroll$1);
       TW3ControlBackground.FromURL(TW3MovableControl.GetBackGround(Self),"res\/fond_JPN.png");
       TW3ControlBackgroundSize.SetMode(TW3MovableControl.GetBackGround(Self).FSize$2,4);
-      Self.FLayout$1 = Layout$1.Client(Layout$1,TLayoutConfig.Margins$(Layout$1.Spacing$1(Layout$1,5),5),[Layout$1.Top$7(Layout$1,Layout$1.Margins$2(Layout$1,0),[Layout$1.Left$9(Layout$1,Self.imgLogo), Layout$1.Client$3(Layout$1,Self.imgTitre)].slice()), Layout$1.Top$7(Layout$1,Layout$1.Margins$2(Layout$1,5),[Layout$1.Left$9(Layout$1,Self.imgPhare), Layout$1.Left$9(Layout$1,Self.imgProg), Layout$1.Left$9(Layout$1,Self.imgListe), Layout$1.Client$3(Layout$1,Self.imgVide)].slice()), Layout$1.Top$10(Layout$1,Self.lbTheme), Layout$1.Top$10(Layout$1,Self.cbTheme), Layout$1.Client(Layout$1,Layout$1.Margins$2(Layout$1,5),[Self.scroll$1].slice()), Layout$1.Bottom$7(Layout$1,Self.imgPied)].slice());
+      Self.FLayout$1 = Layout$1.Client(Layout$1,TLayoutConfig.Margins$(Layout$1.Spacing$1(Layout$1,5),5),[Layout$1.Top$7(Layout$1,Layout$1.Margins$2(Layout$1,0),[Layout$1.Left$9(Layout$1,Self.imgLogo), Layout$1.Client$3(Layout$1,Self.imgTitre)].slice()), Layout$1.Top$10(Layout$1,Self.lbCTM), Layout$1.Top$7(Layout$1,Layout$1.Margins$2(Layout$1,7),[Layout$1.Left$9(Layout$1,Self.imgPhare), Layout$1.Left$9(Layout$1,Self.imgProg), Layout$1.Left$9(Layout$1,Self.imgListe), Layout$1.Client$3(Layout$1,Self.imgVide)].slice()), Layout$1.Top$10(Layout$1,Self.lbTheme), Layout$1.Top$10(Layout$1,Self.cbTheme), Layout$1.Client(Layout$1,Layout$1.Margins$2(Layout$1,5),[Self.scroll$1].slice()), Layout$1.Bottom$7(Layout$1,Self.imgPied)].slice());
    }
    /// procedure TFProgramme.PhareDataReady(Sender: TW3HttpRequest)
-   ///  [line: 157, column: 23, file: FProgramme]
+   ///  [line: 158, column: 23, file: FProgramme]
    ,PhareDataReady:function(Self, Sender$17) {
       var mesures = "";
       var i$6 = 0;
@@ -17348,7 +17357,7 @@ var TFProgramme = {
       TW3TagObj.a$46(Self.lbContenu,html$1);
    }
    /// procedure TFProgramme.ProgDataReady(Sender: TW3HttpRequest)
-   ///  [line: 95, column: 23, file: FProgramme]
+   ///  [line: 96, column: 23, file: FProgramme]
    ,ProgDataReady:function(Self, Sender$18) {
       var programme = "";
       var i$7 = 0;
@@ -17380,7 +17389,7 @@ var TFProgramme = {
       TFProgramme.FiltrerListe(Self,"");
    }
    /// procedure TFProgramme.Resize()
-   ///  [line: 177, column: 23, file: FProgramme]
+   ///  [line: 178, column: 23, file: FProgramme]
    ,Resize:function(Self) {
       TLayout.Resize$8$(Self.FLayout$1,Self);
    }
