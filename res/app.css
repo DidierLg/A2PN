@@ -568,9 +568,6 @@ div, input, button, span {
   padding: 2px;
   background-color: #EFEBE7;
 
-  background:
-    url('res/fond_JPN.png') no-repeat 100% 0px,
-
   /* This forces the browsers that support it to
      use the GPU rather than CPU for movement */
   -webkit-transform: translateZ(0);
