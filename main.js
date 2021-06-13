@@ -15641,12 +15641,12 @@ var TBinaryData = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TBinaryData.$Intf={
-   IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString$10,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.Clone$1]
-   ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
-   ,IBinaryDataImport:[TBinaryData.FromBase64]
+   IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
    ,IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
+   ,IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString$10,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.Clone$1]
+   ,IBinaryDataImport:[TBinaryData.FromBase64]
+   ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
    ,IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
-   ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
    ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
    ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
 }
@@ -17182,6 +17182,8 @@ var TFProgramme = {
    ,FiltrerSecteur:function(Self, choix) {
       var i$5 = 0;
       var p = 0;
+      var w$1 = 0;
+      var h$2 = 0;
       var s = "";
       var html = "";
       var nom = "";
@@ -17191,6 +17193,8 @@ var TFProgramme = {
       var photo = "";
       var texte = "";
       html = "";
+      w$1 = Trunc(TW3MovableControl.GetWidth$(Self)*0.8);
+      h$2 = Trunc(w$1*720/738);
       var $temp57;
       for(i$5=0,$temp57=Self.tab_liste.length;i$5<$temp57;i$5++) {
          s = Self.tab_liste[i$5];
@@ -17203,7 +17207,7 @@ var TFProgramme = {
          if (secteur!=choix) {
             continue;
          }
-         html+=("<img src=\"res\/"+photo.toString()+".png\" alt=\""+nom.toString()+"\"><\/br>");
+         html+=("<img src=\"res\/"+photo.toString()+".png\" alt=\""+nom.toString()+"\" width=\""+w$1.toString()+"\" height=\""+h$2.toString()+"\"><\/br>");
          html = html+"<h2>"+nom+"<\/h2>";
          html = html+"<b>"+ville+"<\/b><\/br>";
          html = html+"<i>"+info$2+"<\/i><\/br>";
@@ -17342,7 +17346,7 @@ var TFProgramme = {
       Self.FHttpListe.OnDataReady = $Event1(Self,TFProgramme.ListeDataReady);
    }
    /// procedure TFProgramme.InitializeObject()
-   ///  [line: 292, column: 23, file: FProgramme]
+   ///  [line: 296, column: 23, file: FProgramme]
    ,InitializeObject:function(Self) {
       TW3CustomForm.InitializeObject(Self);
       TW3CustomForm.SetCaption(Self,"W3Form");
@@ -17459,7 +17463,7 @@ var TFProgramme = {
       Self.FLayoutPhare = Layout$1.Client(Layout$1,TLayoutConfig.Margins$(Layout$1.Spacing$1(Layout$1,5),5),[Layout$1.Top$7(Layout$1,Layout$1.Margins$2(Layout$1,0),[Layout$1.Left$9(Layout$1,Self.imgLogo), Layout$1.Client$3(Layout$1,Self.imgTitre)].slice()), Layout$1.Top$10(Layout$1,Self.lbCTM), Layout$1.Top$7(Layout$1,Layout$1.Margins$2(Layout$1,7),[Layout$1.Left$9(Layout$1,Self.imgPhare), Layout$1.Left$9(Layout$1,Self.imgProg), Layout$1.Left$9(Layout$1,Self.imgListe), Layout$1.Client$3(Layout$1,Self.imgVide)].slice()), Layout$1.Client(Layout$1,Layout$1.Margins$2(Layout$1,5),[Self.scroll$1].slice()), Layout$1.Bottom$7(Layout$1,Self.imgPied)].slice());
    }
    /// procedure TFProgramme.ListeDataReady(Sender: TW3HttpRequest)
-   ///  [line: 268, column: 23, file: FProgramme]
+   ///  [line: 272, column: 23, file: FProgramme]
    ,ListeDataReady:function(Self, Sender$19) {
       var i$9 = 0;
       var j = 0;
@@ -17517,7 +17521,7 @@ var TFProgramme = {
       return Result
    }
    /// procedure TFProgramme.PhareDataReady(Sender: TW3HttpRequest)
-   ///  [line: 263, column: 23, file: FProgramme]
+   ///  [line: 267, column: 23, file: FProgramme]
    ,PhareDataReady:function(Self, Sender$20) {
       Self.tab_phare = TString.Explode(TString,TW3HttpRequest.a$286(Sender$20),"\n");
    }
