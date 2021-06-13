@@ -1,10 +1,10 @@
 {
 	"manifest_version" : 2,
-	"name" : "Scroll",
+	"name" : "Ansanm",
 	"version" : "0.0.0",
 	"description" : "",
 	"author" : "",
-	"short_name" : "Scroll",
+	"short_name" : "Ansanm",
 	"icons" : { },
 	"offline_enabled" : true,
 	"permissions" : [
