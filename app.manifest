@@ -1,11 +1,10 @@
 CACHE MANIFEST
 # Offline cache version 0.0.1
-# id:51426
+# id:44467
 
 CACHE:
 index.html
 res/app.css
-res/urgences_utf8.txt
 res/pied.png
 res/logo.png
 res/btnC.png
@@ -17,4 +16,6 @@ res/entete.png
 res/fond_JPN.png
 res/btnX.png
 res/mesures_phare_utf8.txt
+res/urgences_utf8.txt
+res/programme_utf8.txt
 lib/polyfill.custom.events.js
