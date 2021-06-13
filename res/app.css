@@ -1289,7 +1289,40 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 }
 
 .lbCTM {
-  color: #DDDDDD;
+  color: #CCCCCC;
   font-style: italic;
   font-size: smaller;
 }
+
+#bleu {
+  color: #1AA8CB;
+}
+
+#fuchsia {
+  color: #A31385;
+}
+
+#vertf {
+  color: #149560;
+}
+
+#violet {
+  color: #501F75;
+}
+
+#orange {
+  color: #F98511;
+}
+
+#rose {
+  color: #F01383;
+}
+
+#vert {
+  color: #76BF20;
+}
+
+#rouge {
+  color: #FA0F0C;
+}
+
