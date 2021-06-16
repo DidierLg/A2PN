@@ -1991,6 +1991,36 @@ var TBoolean = {
    }
    ,Destroy:TObject.Destroy
 };
+function StringReplace(SourceString, OldPattern, NewPattern, Flags) {
+   var Result = "";
+   var temp$1 = "",
+      xpos$1 = 0,
+      ASeg = "",
+      BSeg = "",
+      Parts = [];
+   if ($SetIn(Flags,0,0,2)) {
+      if ($SetIn(Flags,1,0,2)) {
+         Result = StrReplace(SourceString,OldPattern,NewPattern);
+      } else {
+         Parts = (SourceString).split(OldPattern);
+         Result = (Parts).join(NewPattern);
+      }
+   } else {
+      temp$1 = SourceString;
+      if ($SetIn(Flags,1,0,2)) {
+         OldPattern = (temp$1).toLocaleLowerCase();
+         temp$1 = (temp$1).toLocaleLowerCase();
+      }
+      xpos$1 = (temp$1.indexOf(OldPattern)+1);
+      if (xpos$1>0) {
+         ASeg = (temp$1).substr(0,(xpos$1-1));
+         (xpos$1+= OldPattern.length);
+         BSeg = temp$1.substr(xpos$1-1);
+         Result = ASeg+NewPattern+BSeg;
+      }
+   }
+   return Result
+};
 function GetIsRunningInBrowser() {
    var Result = false;
    Result = (!(typeof window === 'undefined'));
@@ -2609,8 +2639,8 @@ var TW3ErrorObject = {
    ,Destroy$:function($){return $.ClassType.Destroy($)}
 };
 TW3ErrorObject.$Intf={
-   IW3ErrorAccess:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
-   ,IW3ErrorObject:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.SetLastErrorF$1,TW3ErrorObject.SetLastError$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
+   IW3ErrorObject:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.SetLastErrorF$1,TW3ErrorObject.SetLastError$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
+   ,IW3ErrorAccess:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
 }
 /// EW3ErrorObject = class (EW3Exception)
 ///  [line: 21, column: 3, file: system.objects]
@@ -3491,11 +3521,11 @@ var TBase64EncDec = {
    ///  [line: 340, column: 30, file: System.Types.Convert]
    ,EncodeChunk:function(Self, Data$11, startpos, endpos) {
       var Result = "";
-      var temp$1 = 0;
+      var temp$2 = 0;
       var output$1 = [];
       while (startpos<endpos) {
-         temp$1 = (Data$11[startpos]<<16)+(Data$11[startpos+1]<<8)+Data$11[startpos+2];
-         output$1.push(TBase64EncDec.TripletToBase64(Self,temp$1));
+         temp$2 = (Data$11[startpos]<<16)+(Data$11[startpos+1]<<8)+Data$11[startpos+2];
+         output$1.push(TBase64EncDec.TripletToBase64(Self,temp$2));
          (startpos+= 3);
       }
       Result = (output$1).join("");
@@ -3982,8 +4012,8 @@ var TAllocation = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TAllocation.$Intf={
-   IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
-   ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
+   IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
+   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
 }
 function a$327(Self) {
    return ((!Self[0]())?true:false);
@@ -4416,29 +4446,29 @@ var TW3TagObj = {
    }
    /// procedure TW3TagObj.AddToComponentState(const Flags: TComponentState)
    ///  [line: 2502, column: 21, file: SmartCL.Components]
-   ,AddToComponentState:function(Self, Flags) {
-      if ($SetIn(Flags,0,0,9)) {
+   ,AddToComponentState:function(Self, Flags$1) {
+      if ($SetIn(Flags$1,0,0,9)) {
          $SetInc(Self.FComponentState,0,0,9);
       }
-      if ($SetIn(Flags,1,0,9)) {
+      if ($SetIn(Flags$1,1,0,9)) {
          $SetInc(Self.FComponentState,1,0,9);
       }
-      if ($SetIn(Flags,3,0,9)) {
+      if ($SetIn(Flags$1,3,0,9)) {
          $SetInc(Self.FComponentState,3,0,9);
       }
-      if ($SetIn(Flags,4,0,9)) {
+      if ($SetIn(Flags$1,4,0,9)) {
          $SetInc(Self.FComponentState,4,0,9);
       }
-      if ($SetIn(Flags,5,0,9)) {
+      if ($SetIn(Flags$1,5,0,9)) {
          $SetInc(Self.FComponentState,5,0,9);
       }
-      if ($SetIn(Flags,6,0,9)) {
+      if ($SetIn(Flags$1,6,0,9)) {
          $SetInc(Self.FComponentState,6,0,9);
       }
-      if ($SetIn(Flags,7,0,9)) {
+      if ($SetIn(Flags$1,7,0,9)) {
          $SetInc(Self.FComponentState,7,0,9);
       }
-      if ($SetIn(Flags,8,0,9)) {
+      if ($SetIn(Flags$1,8,0,9)) {
          $SetInc(Self.FComponentState,8,0,9);
       }
    }
@@ -4694,29 +4724,29 @@ var TW3TagObj = {
    }
    /// procedure TW3TagObj.RemoveFromComponentState(const Flags: TComponentState)
    ///  [line: 2514, column: 21, file: SmartCL.Components]
-   ,RemoveFromComponentState:function(Self, Flags$1) {
-      if ($SetIn(Flags$1,0,0,9)) {
+   ,RemoveFromComponentState:function(Self, Flags$2) {
+      if ($SetIn(Flags$2,0,0,9)) {
          $SetExc(Self.FComponentState,0,0,9);
       }
-      if ($SetIn(Flags$1,1,0,9)) {
+      if ($SetIn(Flags$2,1,0,9)) {
          $SetExc(Self.FComponentState,1,0,9);
       }
-      if ($SetIn(Flags$1,3,0,9)) {
+      if ($SetIn(Flags$2,3,0,9)) {
          $SetExc(Self.FComponentState,3,0,9);
       }
-      if ($SetIn(Flags$1,4,0,9)) {
+      if ($SetIn(Flags$2,4,0,9)) {
          $SetExc(Self.FComponentState,4,0,9);
       }
-      if ($SetIn(Flags$1,5,0,9)) {
+      if ($SetIn(Flags$2,5,0,9)) {
          $SetExc(Self.FComponentState,5,0,9);
       }
-      if ($SetIn(Flags$1,6,0,9)) {
+      if ($SetIn(Flags$2,6,0,9)) {
          $SetExc(Self.FComponentState,6,0,9);
       }
-      if ($SetIn(Flags$1,7,0,9)) {
+      if ($SetIn(Flags$2,7,0,9)) {
          $SetExc(Self.FComponentState,7,0,9);
       }
-      if ($SetIn(Flags$1,8,0,9)) {
+      if ($SetIn(Flags$2,8,0,9)) {
          $SetExc(Self.FComponentState,8,0,9);
       }
    }
@@ -10552,32 +10582,32 @@ var TW3Constraints = {
    /// procedure TW3Constraints.SetEnabled(const NewValue: Boolean)
    ///  [line: 1886, column: 26, file: SmartCL.Components]
    ,SetEnabled$2:function(Self, NewValue$1) {
-      var temp$2 = 0;
+      var temp$3 = 0;
       if (NewValue$1!=Self.FEnabled) {
          if (Self.FEnabled) {
-            temp$2 = Self.FMinWidth;
-            if (temp$2<1) {
+            temp$3 = Self.FMinWidth;
+            if (temp$3<1) {
                Self.FHandle$10.style["min-width"] = "initial";
             } else {
-               Self.FHandle$10.style["min-width"] = TInteger.ToPxStr(temp$2);
+               Self.FHandle$10.style["min-width"] = TInteger.ToPxStr(temp$3);
             }
-            temp$2 = Self.FMaxWidth;
-            if (temp$2<1) {
+            temp$3 = Self.FMaxWidth;
+            if (temp$3<1) {
                Self.FHandle$10.style["max-width"] = "initial";
             } else {
-               Self.FHandle$10.style["max-width"] = TInteger.ToPxStr(temp$2);
+               Self.FHandle$10.style["max-width"] = TInteger.ToPxStr(temp$3);
             }
-            temp$2 = Self.FMinHeight;
-            if (temp$2<1) {
+            temp$3 = Self.FMinHeight;
+            if (temp$3<1) {
                Self.FHandle$10.style["min-height"] = "initial";
             } else {
-               Self.FHandle$10.style["min-height"] = TInteger.ToPxStr(temp$2);
+               Self.FHandle$10.style["min-height"] = TInteger.ToPxStr(temp$3);
             }
-            temp$2 = Self.FMaxHeight;
-            if (temp$2<1) {
+            temp$3 = Self.FMaxHeight;
+            if (temp$3<1) {
                Self.FHandle$10.style["max-height"] = "initial";
             } else {
-               Self.FHandle$10.style["max-height"] = TInteger.ToPxStr(temp$2);
+               Self.FHandle$10.style["max-height"] = TInteger.ToPxStr(temp$3);
             }
          } else {
             TW3Constraints.Reset$6(Self);
@@ -15746,14 +15776,14 @@ var TBinaryData = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TBinaryData.$Intf={
-   IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
+   IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString$10,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.Clone$1]
+   ,IBinaryDataImport:[TBinaryData.FromBase64]
+   ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
+   ,IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
    ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
    ,IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
-   ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$4,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
-   ,IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString$10,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.Clone$1]
-   ,IBinaryDataImport:[TBinaryData.FromBase64]
-   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
    ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate$1,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport,TAllocation.Release$2]
+   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
 }
 /// EBinaryData = class (EW3Exception)
 ///  [line: 125, column: 3, file: system.Memory.Buffer]
@@ -17332,11 +17362,16 @@ var TFProgramme = {
             }
          }
       }
+      if (html!="") {
+         html+="<\/ul>";
+      }
+      html = StringReplace(html,"<ul><li><\/li><\/ul>","",[1]);
       TW3TagObj.a$46(Self.lbContenu,html);
+      WriteLn(html);
       TW3ScrollInfo.ScrollTo(TW3CustomControl.GetScrollInfo(Self.scroll$1),0,0);
    }
    /// procedure TFProgramme.FiltrerSecteur(choix: String)
-   ///  [line: 245, column: 23, file: FProgramme]
+   ///  [line: 248, column: 23, file: FProgramme]
    ,FiltrerSecteur:function(Self, choix$1) {
       var i$6 = 0;
       var p$1 = 0;
@@ -17447,7 +17482,7 @@ var TFProgramme = {
       Self.FHttpListe.OnDataReady = $Event1(Self,TFProgramme.ListeDataReady);
    }
    /// procedure TFProgramme.InitializeObject()
-   ///  [line: 304, column: 23, file: FProgramme]
+   ///  [line: 307, column: 23, file: FProgramme]
    ,InitializeObject:function(Self) {
       TW3CustomForm.InitializeObject(Self);
       TW3CustomForm.SetCaption(Self,"W3Form");
@@ -17564,7 +17599,7 @@ var TFProgramme = {
       TFProgramme.FiltrerProgramme(Self,Item$2.Caption$8);
    }
    /// procedure TFProgramme.ListeDataReady(Sender: TW3HttpRequest)
-   ///  [line: 280, column: 23, file: FProgramme]
+   ///  [line: 283, column: 23, file: FProgramme]
    ,ListeDataReady:function(Self, Sender$19) {
       var i$8 = 0;
       var j = 0;
@@ -21043,11 +21078,11 @@ var TW3ComboBox = {
    ///  [line: 111, column: 22, file: SmartCL.Controls.ComboBox]
    ,Add$10:function(Self, Text$12) {
       var Result = 0;
-      var temp$3 = undefined;
+      var temp$4 = undefined;
       if (Self.FHandle$4) {
-         temp$3 = w3_CreateHtmlElement("option");
-         temp$3.text = Text$12;
-         Self.FHandle$4.add(temp$3);
+         temp$4 = w3_CreateHtmlElement("option");
+         temp$4.text = Text$12;
+         Self.FHandle$4.add(temp$4);
          Result = TVariant.AsInteger(Self.FHandle$4.options.length);
       } else {
          throw EW3Exception.CreateFmt($New(EW3Exception),$R[0],["TW3ComboBox.Add", TObject.ClassName(Self.ClassType), "Invalid error"]);
@@ -21875,8 +21910,8 @@ var TW3DirectoryParser = {
 };
 TW3DirectoryParser.$Intf={
    IW3DirectoryParser:[TW3DirectoryParser.GetPathSeparator,TW3DirectoryParser.GetRootMoniker,TW3DirectoryParser.GetErrorObject,TW3DirectoryParser.IsValidPath,TW3DirectoryParser.HasValidPathChars,TW3DirectoryParser.HasValidFileNameChars,TW3DirectoryParser.IsRelativePath,TW3DirectoryParser.IsPathRooted,TW3DirectoryParser.GetFileNameWithoutExtension,TW3DirectoryParser.GetPathName,TW3DirectoryParser.GetDevice,TW3DirectoryParser.GetFileName,TW3DirectoryParser.GetExtension,TW3DirectoryParser.GetDirectoryName,TW3DirectoryParser.IncludeTrailingPathDelimiter,TW3DirectoryParser.IncludeLeadingPathDelimiter,TW3DirectoryParser.ExcludeLeadingPathDelimiter,TW3DirectoryParser.ExcludeTrailingPathDelimiter,TW3DirectoryParser.ChangeFileExt]
-   ,IW3ErrorAccess:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
    ,IW3ErrorObject:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.SetLastErrorF$1,TW3ErrorObject.SetLastError$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
+   ,IW3ErrorAccess:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
 }
 /// TW3UnixDirectoryParser = class (TW3DirectoryParser)
 ///  [line: 81, column: 3, file: system.IOUtils]
@@ -22030,7 +22065,7 @@ var TW3UnixDirectoryParser = {
       var Result = "";
       var Temp$16 = "",
          Separator$3 = "",
-         Parts = [];
+         Parts$1 = [];
       if (TW3ErrorObject.GetFailed$1(Self)) {
          TW3ErrorObject.ClearLastError$1(Self);
       }
@@ -22040,8 +22075,8 @@ var TW3UnixDirectoryParser = {
          if (StrEndsWith(Temp$16,Separator$3)) {
             TW3ErrorObject.SetLastError$1(Self,"No filename part in path error");
          } else {
-            Parts = (Temp$16).split(Separator$3);
-            Result = Parts[(Parts.length-1)];
+            Parts$1 = (Temp$16).split(Separator$3);
+            Result = Parts$1[(Parts$1.length-1)];
          }
       } else {
          TW3ErrorObject.SetLastError$1(Self,"Failed to extract filename, path was empty error");
@@ -22052,13 +22087,13 @@ var TW3UnixDirectoryParser = {
    ///  [line: 575, column: 33, file: system.IOUtils]
    ,GetFileNameWithoutExtension:function(Self, Filename$2) {
       var Result = "";
-      var temp$4 = "";
+      var temp$5 = "";
       if (TW3ErrorObject.GetFailed$1(Self)) {
          TW3ErrorObject.ClearLastError$1(Self);
       }
-      temp$4 = TW3DirectoryParser.GetFileName$(Self,Filename$2);
+      temp$5 = TW3DirectoryParser.GetFileName$(Self,Filename$2);
       if (!TW3ErrorObject.GetFailed$1(Self)) {
-         Result = TW3DirectoryParser.ChangeFileExt$(Self,temp$4,"");
+         Result = TW3DirectoryParser.ChangeFileExt$(Self,temp$5,"");
       }
       return Result
    }
@@ -22067,7 +22102,7 @@ var TW3UnixDirectoryParser = {
    ,GetPathName:function(Self, FilePath$8) {
       var Result = "";
       var Temp$17 = "",
-         Parts$1 = [],
+         Parts$2 = [],
          Separator$4 = "";
       if (TW3ErrorObject.GetFailed$1(Self)) {
          TW3ErrorObject.ClearLastError$1(Self);
@@ -22081,15 +22116,15 @@ var TW3UnixDirectoryParser = {
                return "";
             }
             Temp$17 = (Temp$17).substr(0,(Temp$17.length-1));
-            Parts$1 = (Temp$17).split(Separator$4);
-            Result = Parts$1[(Parts$1.length-1)];
+            Parts$2 = (Temp$17).split(Separator$4);
+            Result = Parts$2[(Parts$2.length-1)];
             return Result;
          }
-         Parts$1 = (Temp$17).split(Separator$4);
-         if (Parts$1.length>1) {
-            Result = Parts$1[(Parts$1.length-1)-1];
+         Parts$2 = (Temp$17).split(Separator$4);
+         if (Parts$2.length>1) {
+            Result = Parts$2[(Parts$2.length-1)-1];
          } else {
-            Result = Parts$1[(Parts$1.length-1)];
+            Result = Parts$2[(Parts$2.length-1)];
          }
       } else {
          TW3ErrorObject.SetLastError$1(Self,"Failed to extract directory name, path was empty error");
@@ -22251,8 +22286,8 @@ var TW3UnixDirectoryParser = {
 };
 TW3UnixDirectoryParser.$Intf={
    IW3DirectoryParser:[TW3UnixDirectoryParser.GetPathSeparator,TW3UnixDirectoryParser.GetRootMoniker,TW3DirectoryParser.GetErrorObject,TW3UnixDirectoryParser.IsValidPath,TW3UnixDirectoryParser.HasValidPathChars,TW3UnixDirectoryParser.HasValidFileNameChars,TW3DirectoryParser.IsRelativePath,TW3DirectoryParser.IsPathRooted,TW3UnixDirectoryParser.GetFileNameWithoutExtension,TW3UnixDirectoryParser.GetPathName,TW3UnixDirectoryParser.GetDevice,TW3UnixDirectoryParser.GetFileName,TW3UnixDirectoryParser.GetExtension,TW3UnixDirectoryParser.GetDirectoryName,TW3UnixDirectoryParser.IncludeTrailingPathDelimiter,TW3UnixDirectoryParser.IncludeLeadingPathDelimiter,TW3UnixDirectoryParser.ExcludeLeadingPathDelimiter,TW3UnixDirectoryParser.ExcludeTrailingPathDelimiter,TW3UnixDirectoryParser.ChangeFileExt]
-   ,IW3ErrorAccess:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
    ,IW3ErrorObject:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.SetLastErrorF$1,TW3ErrorObject.SetLastError$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
+   ,IW3ErrorAccess:[TW3ErrorObject.GetFailed$1,TW3ErrorObject.GetLastError$1,TW3ErrorObject.ClearLastError$1]
 }
 /// TPath = class (TObject)
 ///  [line: 107, column: 3, file: system.IOUtils]
